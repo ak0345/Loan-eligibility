@@ -9,7 +9,7 @@ from sklearn.linear_model import LogisticRegression as LR
 from sklearn.tree import DecisionTreeClassifier as DTC
 from sklearn.preprocessing import normalize
 
-df = pd.read_csv("loan_eligibility_data/loan-train.csv").drop("Loan_ID", axis = 1)
+df = pd.read_csv("loan-train.csv").drop("Loan_ID", axis = 1)
 print(df.info())
 
 #Encoding categorical features
@@ -73,12 +73,14 @@ model_lr.fit(X_train, y_train)
 Y_hat_lr = model_lr.predict(X_test)
 
 print(accuracy_score(y_test, Y_hat_lr))
+# 0.7967479674796748
 
 model_dtc = DTC(criterion="entropy", random_state=42)
 model_dtc.fit(X_train, y_train)
 Y_hat_dtc = model_dtc.predict(X_test)
 
 print(accuracy_score(y_test, Y_hat_dtc))
+# 0.7154471544715447
 
 model_rfc = RFC(random_state=42)
 model_rfc.fit(X_train, y_train)
@@ -86,3 +88,4 @@ model_rfc.fit(X_train, y_train)
 Y_hat_rfc = model_rfc.predict(X_test)
 
 print(accuracy_score(y_test, Y_hat_rfc))
+# 0.7967479674796748
